@@ -47,18 +47,19 @@ print_r($datos);
                     {
                         ?>
                         <tr>
-                            <td><?php echo $dato['id']</td>
-                            <td><?php echo $dato['categoria']</td>
-                            <td><?php echo $dato['nombre']</td>
-                            <td><?php echo $dato['precio']</td>
-                            <td><?php echo $dato['fecha']</td>
+                            <td><?php echo $dato['id']; ?></td>
+                            <td><?php echo $dato['categoria']; ?></td>
+                            <td><?php echo $dato['nombre']; ?></td>
+                            <td><?php echo $dato['precio']; ?></td>
+                            <td><?php echo $dato['fecha']; ?></td>
                             <td>
                                 <a href="">Editar</a>
                                 <a href="">Eliminar</a>
                                 <a href="">Guardar</a>
                                 <a href="">Crear</a>
-                        </tr>
-                    }
+                        </tr> 
+                        <?php
+                    }   
                     ?>
                 </tbody>
             </table>

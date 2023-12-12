@@ -13,20 +13,21 @@ if (isset($_POST['nombre']))
     {
         $mensaje="vacio";
     }
-    if (!empty($mensaje)
+    if (!empty($mensaje))
     {
-        hearder("Location:add.php? error=1");
+        header("Location:add.php? error=0");
     }else
     {
-        $sql="insert into productos values(null,'".POST['categoria_id']."','".$_POST['nombre']."','".$_POST['precio']."',now());";
+        $sql="insert into productos values(null,'".$_POST['categoria_id']."','".$_POST['nombre']."',
+        '".$_POST['precio']."',now());";
         //echo $sql;exist;   se cve si la consulta existe en la base de datos 
-        $d->setDatos(sql);
-        hearder("location:add.php?error=0")
+        $d->setDatos($sql);
+        header("location:add.php?error=0");
     }
 
 }else
 {
-    categoria = $d->getDatos("select * from categorias;");
+    $categoria = $d->getDatos("select * from categorias;");
 
 }
 ?>
@@ -48,15 +49,14 @@ if (isset($_POST['nombre']))
         <div class="card-body text-primary">
            <form action=""method="POST" name="form">// se crea un formulario
             <div class="mb-3">
-            <label for="categoria_id">Categoria</label>
+            <label form="categoria_id">Categoria</label>
             <select name="categoria_id" id="categoria_id"
             class="from-control">
                 <?php
-                foreach($categoria as $categoria)
+                foreach($categoria as $categorias)
                 {
                     ?>
-                        <option value="<?php echo $categoria['id'];?>"><?
-                        php echo $categoria['nombre'];?></option>
+                        <option value="<?php echo $categoria['id'];?>"><?php echo $categoria['nombre'];?></option>
                     <?php
                 }
                 ?>
