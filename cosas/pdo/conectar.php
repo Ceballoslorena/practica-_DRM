@@ -5,19 +5,16 @@ abstract class conectar
 
     public function conectar()
     {
-        try{
-
-            $this->con =new PDO("mysql:dbname=practica_DRM.sql; host=localhost","root","Lorena05*");
-              // el primero es la dcn de la base de datos, usuario, contrase;a de la base de datos
-        } catch(PDOException $e){
+        try {
+            $this->con =new PDO("mysql:dbname=practica_drm; host=localhost","root","password");
+        } catch(PDOException $e) {
             die("error:".$e);
         }
 
-    
         return $this->con;
     }
-    public function setNames()
 
+    public function setNames()
     {
         return $this->con->query("SET NAMES 'utf-8'");
     }
@@ -32,10 +29,10 @@ class Datos extends Conectar
     {
 
         $this->bd = self::conectar();
-        self::setNames();
+        //self::setNames();
     }
-    public function getDatos($sql)  //trate muchos datos de la consulta
 
+    public function getDatos($sql)  //trate muchos datos de la consulta
     {
         $datos = $this->bd->prepare($sql);
         //prepara la consulta para que se pueda ejecutar
@@ -43,6 +40,7 @@ class Datos extends Conectar
         return $datos->fetchAll(); // fetchAll trae todas las consulta
         $this->bd=null;
     }
+
     public function getDato($sql) //trae un solo dato de la consulta
     {
         $datos = $this->bd->prepare($sql);
@@ -50,6 +48,7 @@ class Datos extends Conectar
         return $datos->fetch(); //fetch trae solamente un solo arreglo de la consulta
         $this->bd=null;
     }
+    
     public function setDatos($sql)
     {
         $datos = $this->bd->prepare($sql);
